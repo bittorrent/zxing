@@ -22,6 +22,7 @@ import com.google.zxing.common.BitSource;
 import com.google.zxing.common.CharacterSetECI;
 import com.google.zxing.common.DecoderResult;
 import com.google.zxing.common.StringUtils;
+import com.google.zxing.qrcode.encoder.Encoder;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -227,12 +228,11 @@ final class DecodedBitStreamParser {
     }
     String encoding;
     if (currentCharacterSetECI == null) {
-      // The spec isn't clear on this mode; see
-      // section 6.4.5: t does not say which encoding to assuming
-      // upon decoding. I have seen ISO-8859-1 used as well as
-      // Shift_JIS -- without anything like an ECI designator to
-      // give a hint.
-      encoding = StringUtils.guessEncoding(readBytes, hints);
+      String hinted = (String)hints.get(DecodeHintType.CHARACTER_SET);
+      if (hinted != null)
+        encoding = hinted;
+      else
+        encoding = Encoder.DEFAULT_BYTE_MODE_ENCODING;
     } else {
       encoding = currentCharacterSetECI.name();
     }

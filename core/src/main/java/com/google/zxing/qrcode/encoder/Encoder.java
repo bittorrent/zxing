@@ -47,7 +47,7 @@ public final class Encoder {
       25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, -1, -1, -1, -1, -1,  // 0x50-0x5f
   };
 
-  static final String DEFAULT_BYTE_MODE_ENCODING = "ISO-8859-1";
+  public static final String DEFAULT_BYTE_MODE_ENCODING = "ISO-8859-1";
 
   private Encoder() {
   }
