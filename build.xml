@@ -4,9 +4,15 @@
 		<mkdir dir="dist/"/>
 	</target>
 	<target name="compile" depends="init">
-		<javac srcdir="core/src/main/java/" destdir="classes/"/>
+		<javac srcdir="core/src/main/java/" destdir="classes/">
+			<compilerarg line="-encoding UTF-8"/>
+		</javac>
 	</target>
 	<target name="dist" depends="compile">
 		<jar jarfile="dist/zxing-core.jar" basedir="classes/"/>
+	</target>
+	<target name="clean">
+		<delete dir="classes"/>
+		<delete dir="dist"/>
 	</target>
 </project>
