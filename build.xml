@@ -4,7 +4,7 @@
 		<mkdir dir="dist/"/>
 	</target>
 	<target name="compile" depends="init">
-		<javac srcdir="core/src/main/java/" destdir="classes/">
+		<javac source="1.7" target="1.7" srcdir="core/src/main/java/" destdir="classes/">
 			<compilerarg line="-encoding UTF-8"/>
 		</javac>
 	</target>
